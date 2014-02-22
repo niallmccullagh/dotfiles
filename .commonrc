@@ -1,0 +1,9 @@
+# Load things
+[[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
+
+# Locale
+export LC_ALL=en_US.UTF-8  
+export LANG=en_US.UTF-8
+
+# Misc settings
+export EDITOR=vim

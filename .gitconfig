@@ -1,0 +1,10 @@
+
+[credential]
+helper = /opt/boxen/bin/boxen-git-credential
+
+[core]
+excludesfile = /opt/boxen/config/git/gitignore
+[color]
+	ui = auto
+[user]
+	name = Niall McCullagh
