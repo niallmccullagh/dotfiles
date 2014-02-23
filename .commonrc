@@ -7,3 +7,7 @@ export LANG=en_US.UTF-8
 
 # Misc settings
 export EDITOR=vim
+
+#Lets add some colour to the termnial window
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
