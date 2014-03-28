@@ -4,7 +4,9 @@ helper = /opt/boxen/bin/boxen-git-credential
 
 [core]
 excludesfile = /opt/boxen/config/git/gitignore
+	autocrlf = input
 [color]
 	ui = auto
 [user]
 	name = Niall McCullagh
+	email = niall.mccullagh@bitnet.io

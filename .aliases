@@ -1,2 +1,4 @@
 alias ll='ls -al'
 alias rm='rm -i'
+alias jcurl='curl -H "Accept: application/json" -i'
+alias dev="pushd ${HOME}/src/bitnet-dev"
