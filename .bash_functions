@@ -7,3 +7,7 @@ cd() {
   pushd $DIR > /dev/null;
   dirs
 }
+
+function title {
+    echo -ne "\033]0;"$*"\007"
+}
