@@ -10,3 +10,6 @@ excludesfile = /opt/boxen/config/git/gitignore
 [user]
 	name = Niall McCullagh
 	email = niall.mccullagh@bitnet.io
+
+[hub]
+protocol = https
