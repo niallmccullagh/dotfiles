@@ -16,3 +16,4 @@ export HISTCONTROL=ignoreboth
 [[ -f "$HOME/.bash_functions" ]] && source "$HOME/.bash_functions"
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home
+export M2_HOME=/opt/boxen/homebrew/Cellar/maven/3.2.1/libexec/
