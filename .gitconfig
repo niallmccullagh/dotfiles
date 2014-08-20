@@ -5,6 +5,7 @@ helper = /opt/boxen/bin/boxen-git-credential
 [core]
 excludesfile = /opt/boxen/config/git/gitignore
 	autocrlf = input
+	ignorecase = false
 [color]
 	ui = auto
 [user]
@@ -13,3 +14,9 @@ excludesfile = /opt/boxen/config/git/gitignore
 
 [hub]
 protocol = https
+[diff]
+	tool = bc3
+[difftool]
+	prompt = false
+[merge]
+	tool = bc3

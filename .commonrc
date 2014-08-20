@@ -11,3 +11,5 @@ export EDITOR=vim
 #Lets add some colour to the termnial window
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
+
+export MAVEN_OPTS="-Xms2048m -Xmx2048m -XX:PermSize=256m -XX:MaxPermSize=512m"
