@@ -7,7 +7,7 @@ excludesfile = /opt/boxen/config/git/gitignore
 	autocrlf = input
 	ignorecase = false
 [color]
-	ui = auto
+	ui = true
 [user]
 	name = Niall McCullagh
 	email = niall.mccullagh@bitnet.io
@@ -20,3 +20,7 @@ protocol = https
 	prompt = false
 [merge]
 	tool = bc3
+[gui]
+	recentrepo = /opt/boxen/repo
+[push]
+	default = simple
