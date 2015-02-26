@@ -1,6 +1,6 @@
 #ln -sf .git-prompt.sh ~/
 
-declare -a arr=(".aliases" ".bash_prompt" ".gitconfig" ".bash_profile" ".commonrc" ".git-prompt.sh" ".bash_functions")
+declare -a arr=(".aliases" ".bash_prompt" ".gitconfig" ".bash_profile" ".commonrc" ".git-prompt.sh" ".bash_functions" ".vimrc" ".vim")
 dest_dir=~
 cwd=$(pwd)
 
