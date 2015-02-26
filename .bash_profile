@@ -17,8 +17,8 @@ export HISTCONTROL=ignoreboth
 
 [[ -f "/opt/boxen/homebrew/etc/bash_completion.d/git-completion.bash" ]] && source /opt/boxen/homebrew/etc/bash_completion.d/git-completion.bash
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home
-export M2_HOME=/opt/boxen/homebrew/Cellar/maven/3.2.1/libexec/
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/
+export M2_HOME=/opt/boxen/homebrew/Cellar/maven/3.2.5/libexec/
 
 # Set bash to vi mode
 set -o vi
