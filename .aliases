@@ -2,3 +2,4 @@ alias ll='ls -al'
 alias rm='rm -i'
 alias jcurl='curl -H "Accept: application/json" -i'
 alias dev="pushd ${HOME}/src/bitnet-dev"
+alias btc-testnet='/Applications/Bitcoin-Qt.app/Contents/MacOS/Bitcoin-Qt -testnet -txindex=1 &'
