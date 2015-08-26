@@ -15,7 +15,7 @@ set incsearch
 set hlsearch
 
 "enable the mouse
-set mouse=a
+"set mouse=a
 
 " Display cursor line highlight
 set cursorline
@@ -57,3 +57,10 @@ let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 
 set laststatus=2
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Auto wrap git commmit to  72 columns + spell cgecker
+autocmd Filetype gitcommit setlocal spell textwidth=72
+
