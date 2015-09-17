@@ -4,6 +4,9 @@
 # Boxen
 [[ -f "/opt/boxen/env.sh" ]] && source "/opt/boxen/env.sh"
 
+# Jenv
+if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+
 # Larger bash history (default is 500)
 export HISTFILESIZE=10000
 export HISTSIZE=10000
