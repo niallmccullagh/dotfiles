@@ -1,26 +1,37 @@
-
-[credential]
-helper = /opt/boxen/bin/boxen-git-credential
-
 [core]
-excludesfile = /opt/boxen/config/git/gitignore
+        excludesfile = /opt/boxen/config/git/gitignore
 	autocrlf = input
 	ignorecase = false
+
 [color]
 	ui = true
-[user]
-	name = Niall McCullagh
-	email = niall.mccullagh@bitnet.io
 
-[hub]
-protocol = https
+[credential]
+        helper = /opt/boxen/bin/boxen-git-credential
+
 [diff]
+        # Use beyond compare as the diff tool
 	tool = bc3
+
+	# Include summaries of merged commits in newly created merge commit messages
+	log = true
+
 [difftool]
 	prompt = false
+
+[help]
+	# Automatically correct and execute mistyped commands
+	autocorrect = 1
+
+[hub]
+        protocol = https
+
 [merge]
 	tool = bc3
-[gui]
-	recentrepo = /opt/boxen/repo
+
 [push]
 	default = simple
+
+[user]
+	name = Niall McCullagh
+	email = niall.mccullagh@gmail.com
