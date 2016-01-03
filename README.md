@@ -11,7 +11,7 @@ Collection of dotfiles as I'm tired of recreating these.
 You can clone the repository wherever you want. (I like to keep it in `~/Projects/dotfiles`, with `~/dotfiles` as a symlink.) The install script will pull in the latest version and link the files to your home folder.
 
 ```bash
-git clone https://github.com/niallmccullagh/dotfiles.git && cd dotfiles && install.sh
+git clone https://github.com/niallmccullagh/dotfiles.git && cd dotfiles && ./install.sh
 ```
 
 ### Git-free install
@@ -19,7 +19,7 @@ git clone https://github.com/niallmccullagh/dotfiles.git && cd dotfiles && insta
 To install these dotfiles without Git:
 
 ```bash
-mkdir -p ~/Projects/dotfiles; cd ~/Projects/dotfiles; curl -#L https://github.com/niallmccullagh/dotfiles/tarball/master | tar -xzv --strip-components 1 --exclude={README.md,bootstrap.sh,LICENSE-MIT.txt} && install.sh
+mkdir -p ~/Projects/dotfiles; cd ~/Projects/dotfiles; curl -#L https://github.com/niallmccullagh/dotfiles/tarball/master | tar -xzv --strip-components 1 --exclude={README.md,bootstrap.sh,LICENSE-MIT.txt} && ./install.sh
 ```
 
 To update later on, just run that command again.
