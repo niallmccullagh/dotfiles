@@ -1,20 +1,29 @@
 # Add `~/bin` to the `$PATH`
 [[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH";
 
-# Prompt
-[[ -f "$HOME/.bash_prompt" ]] && source "$HOME/.bash_prompt"
+# Load the shell dotfiles, and then some:
+# * ~/.path can be used to extend `$PATH`.
+# * ~/.extra can be used for other settings you don’t want to commit.
+for file in ~/.{path,bash_prompt,exports,aliases,bash_functions,extra}; do
+        [ -r "$file" ] && [ -f "$file" ] && source "$file";
+done;
+unset file;
 
 # Boxen
 [[ -f "/opt/boxen/env.sh" ]] && source "/opt/boxen/env.sh"
 
-# Jenv
-if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+# Case-insensitive globbing (used in pathname expansion)
+shopt -s nocaseglob;
 
-# Common junk
-[[ -s "$HOME/.commonrc" ]] && source "$HOME/.commonrc"
+# Autocorrect typos in path names when using `cd`
+shopt -s cdspell;
 
-# Prompt
-[[ -f "$HOME/.bash_functions" ]] && source "$HOME/.bash_functions"
+# Enable some Bash 4 features when possible:
+# * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
+# * Recursive globbing, e.g. `echo **/*.txt`
+for option in autocd globstar; do
+        shopt -s "$option" 2> /dev/null;
+done;
 
 # Add tab completion for many Bash commands
 if which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
@@ -24,12 +33,16 @@ elif [ -f /etc/bash_completion ]; then
 fi;
 
 # Enable tab completion for git
-[[ -f "/opt/boxen/homebrew/etc/bash_completion.d/git-completion.bash" ]] && source /opt/boxen/homebrew/etc/bash_completion.d/git-completion.bash
+[[ -f "$(brew --prefix)/etc/bash_completion.d/git-completion.bash" ]] && source "$(brew --prefix)/etc/bash_completion.d/git-completion.bash"
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
 
-export M2_HOME=/opt/boxen/homebrew/Cellar/maven/3.2.5/libexec/
-
 # Set bash to vi mode
 set -o vi
+
+# Initialise jenv
+if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+
+# Set default docker-machine environment
+if which docker-machine > /dev/null; then eval "$(docker-machine env dev)"; fi
