@@ -13,3 +13,13 @@ export HISTCONTROL='ignoreboth';
 # Prefer US English and use UTF-8.
 export LANG='en_US.UTF-8';
 export LC_ALL='en_US.UTF-8';
+
+#Lets add some colour to the termnial window
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+
+# Set Maven home directory
+export M2_HOME=`brew --prefix maven`/libexec
+
+# Give Maven dinner as it is hungry
+export MAVEN_OPTS="-Xms2048m -Xmx2048m -XX:PermSize=256m -XX:MaxPermSize=512m"
