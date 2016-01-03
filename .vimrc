@@ -20,6 +20,9 @@ set hlsearch
 " Display cursor line highlight
 set cursorline
 
+" Always show status line
+set laststatus=2
+
 " Load pathogen plugins
 execute pathogen#infect()
 
@@ -55,8 +58,6 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
-
-set laststatus=2
 
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
