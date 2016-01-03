@@ -119,7 +119,7 @@ install_package maven ''
 install_package ngrep ''
 
 # homebrew/dupes/openssh: OpenBSD freely-licensed SSH connectivity tools
-install_package /homebrew/dupes/openssh ''
+install_package homebrew/dupes/openssh ''
 
 # openssl: OpenSSL SSL/TLS cryptography library
 install_package openssl ''

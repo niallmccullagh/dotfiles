@@ -32,3 +32,6 @@
 [push]
 	default = simple
 
+[user]
+	name = Niall McCullagh
+	email = niall.mccullagh@gmail.com
