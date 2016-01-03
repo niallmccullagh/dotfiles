@@ -44,5 +44,11 @@ set -o vi
 # Initialise jenv
 if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
+# Initialise rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# Initialise nodenv
+if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi§
+
 # Set default docker-machine environment
 if which docker-machine > /dev/null; then eval "$(docker-machine env dev)"; fi

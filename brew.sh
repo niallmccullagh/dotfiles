@@ -118,6 +118,9 @@ install_package maven ''
 # ngrepetwork grep
 install_package ngrep ''
 
+# nodenv: Manage multiple NodeJS versions
+install_package nodenv ''
+
 # homebrew/dupes/openssh: OpenBSD freely-licensed SSH connectivity tools
 install_package homebrew/dupes/openssh ''
 
@@ -136,8 +139,11 @@ install_package python3 ''
 # rabbitmq: Messaging broker
 #install_package rabbitmq ''
 
-# ruby: Powerful, clean, object-oriented scripting language
-install_package ruby ''
+# rbenv: Ruby version manager
+install_package rbenv ''
+
+# ruby-build: Install various Ruby versions and implementations
+install_package ruby-build ''
 
 # ssh-copy-id: Add a public key to a remote machine's authorized_keys file
 install_package ssh-copy-id ''
