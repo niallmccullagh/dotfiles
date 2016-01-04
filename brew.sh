@@ -165,6 +165,7 @@ install_package wget ''
 ########################################################################
 install_cask_package 1password
 install_cask_package alfred
+install_cask_package atom
 install_cask_package bartender
 #install_cask_package clamxav
 install_cask_package cleanmymac
