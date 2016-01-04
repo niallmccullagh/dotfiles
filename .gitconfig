@@ -1,13 +1,9 @@
 [core]
-        excludesfile = /opt/boxen/config/git/gitignore
 	autocrlf = input
 	ignorecase = false
 
 [color]
 	ui = true
-
-[credential]
-        helper = /opt/boxen/bin/boxen-git-credential
 
 [diff]
         # Use beyond compare as the diff tool
