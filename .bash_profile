@@ -33,7 +33,7 @@ elif [ -f /etc/bash_completion ]; then
 fi;
 
 # Enable tab completion for git
-[[ -f "$(brew --prefix)/etc/bash_completion.d/git-completion.bash" ]] && source "$(brew --prefix)/etc/bash_completion.d/git-completion.bash"
+which brew > /dev/null && [[ -f "$(brew --prefix)/etc/bash_completion.d/git-completion.bash" ]] && source "$(brew --prefix)/etc/bash_completion.d/git-completion.bash"
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
@@ -48,7 +48,7 @@ if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Initialise nodenv
-if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi§
+if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
 
 # Set default docker-machine environment
 if which docker-machine > /dev/null; then eval "$(docker-machine env dev)"; fi
