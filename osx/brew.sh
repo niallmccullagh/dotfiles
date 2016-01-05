@@ -190,7 +190,7 @@ install_cask_package virtualbox
 ########################################################################
 # Set bash v4 up
 ########################################################################
-if [ $(cat /private/etc/shells | grep '$(brew --prefix)/bin/bash' | wc -l) -eq 0 ]; then
+if [ $(cat /private/etc/shells | grep "$(brew --prefix)/bin/bash" | wc -l) -eq 0 ]; then
     sudo bash -c 'echo $(brew --prefix)/bin/bash >> /private/etc/shells'
 fi
 
