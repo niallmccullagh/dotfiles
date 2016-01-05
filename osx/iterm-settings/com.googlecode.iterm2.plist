@@ -323,9 +323,11 @@
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
 	<key>NSWindow Frame Preferences</key>
-	<string>124 121 924 485 0 0 1280 777 </string>
+	<string>269 110 924 485 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>364 219 490 376 0 0 1280 778 </string>
+	<string>280 341 850 376 0 0 1280 777 </string>
+	<key>NeverWarnAboutShortLivedSessions_244AC865-53CF-4024-B359-2D3A0977FB58</key>
+	<true/>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1052,10 +1054,12 @@
 			<integer>0</integer>
 		</dict>
 	</array>
+	<key>NoSyncNeverRemindPrefsChangesCopy</key>
+	<true/>
 	<key>NoSyncTimeOfLastPromo</key>
-	<real>473647191.47392398</real>
+	<real>473677481.16756201</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>473647191.47396302</real>
+	<real>473677481.17169601</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -1106,7 +1110,7 @@
 	<key>PromptOnQuit</key>
 	<true/>
 	<key>QuitWhenAllWindowsClosed</key>
-	<false/>
+	<true/>
 	<key>RightCommand</key>
 	<integer>8</integer>
 	<key>RightOption</key>
@@ -1118,7 +1122,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-01-05T00:39:44Z</date>
+	<date>2016-01-05T09:03:52Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
