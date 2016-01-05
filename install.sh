@@ -1,6 +1,8 @@
-declare -a arr=(".aliases" ".bash_prompt" ".gitconfig" ".bash_profile" ".bashrc" "exports" ".git-prompt.sh" ".bash_functions" ".vimrc" ".vim")
+declare -a arr=(".aliases" ".bash_prompt" ".gitconfig" ".bash_profile" ".bashrc" ".exports" ".git-prompt.sh" ".bash_functions" ".vimrc" ".vim")
 dest_dir=~
 cwd=$(pwd)
+
+[[ -L $HOME/.vim ]] && echo Deleting ~/.vim sym link && rm -f $HOME/.vim
 
 echo $cwd
 
