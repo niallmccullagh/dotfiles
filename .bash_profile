@@ -51,4 +51,4 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
 
 # Set default docker-machine environment
-if which docker-machine > /dev/null; then eval "$(docker-machine env dev)"; fi
+if which docker-machine > /dev/null && [ $DISABLE_DOCKER_ENV_SETUP != true ]; then eval "$(docker-machine env dev)"; fi
