@@ -1,5 +1,6 @@
 #OSX Setup
 
+As with any script on the internet, you should review both the `brew.sh` and `settings.sh` files to understand what they do/set/install.
 
 ## Install Brewable applications
 

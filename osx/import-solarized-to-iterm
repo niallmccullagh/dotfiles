@@ -1,3 +1,5 @@
 wget https://raw.githubusercontent.com/altercation/solarized/master/iterm2-colors-solarized/Solarized%20Dark.itermcolors
 
 open "Solarized Dark.itermcolors"
+
+rm "Solarized Dark.itermcolors"

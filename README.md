@@ -46,28 +46,16 @@ My `~/.extra` looks something like this:
 GIT_AUTHOR_NAME="Niall McCullagh"
 GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
 git config --global user.name "$GIT_AUTHOR_NAME"
-GIT_AUTHOR_EMAIL="niall.mccullagh@gmail.com"
+GIT_AUTHOR_EMAIL="blah@gmail.com"
 GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
 git config --global user.email "$GIT_AUTHOR_EMAIL"
 ```
 
 You could also use `~/.extra` to override settings, functions and aliases from my dotfiles repository. It’s probably better to [fork this repository](https://github.com/niallmccullagh/dotfiles/fork) instead, though.
 
-### Sensible OS X defaults
+### OSX
 
-When setting up a new Mac, you may want to set some sensible OS X defaults:
-
-```bash
-./osx/osx.sh
-```
-
-### Install Homebrew formulae
-
-When setting up a new Mac, you may want to install some common [Homebrew](http://brew.sh/) formulae (after installing Homebrew, of course):
-
-```bash
-./osx/brew.sh
-```
+Have a look in the [OSX](osx/README.md) folder where there are scripts to set some sensible osx defaults and a list of useful homebrew installable applications.
 
 ## Feedback
 
