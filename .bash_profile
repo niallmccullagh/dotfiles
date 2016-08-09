@@ -10,15 +10,11 @@ for file in ~/.{path,bash_prompt,exports,aliases,bash_functions,extra}; do
 done;
 unset file;
 
-# Boxen
-[[ -f "/opt/boxen/env.sh" ]] && source "/opt/boxen/env.sh"
-
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
 
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
-
 # Enable some Bash 4 features when possible:
 # * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
 # * Recursive globbing, e.g. `echo **/*.txt`
