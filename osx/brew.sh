@@ -36,7 +36,7 @@ brew tap homebrew/versions
 install_package ack ''
 
 # awscli: Official Amazon AWS command-line interface
-#install_package awscli ''
+install_package awscli ''
 
 # bash: Bash 4 (Bourne-again SHell) is a UNIX command interpreter
 # Noteon’t forget to add `/usr/local/bin/bash` to `/etc/shells` before
@@ -62,13 +62,16 @@ install_package docker ''
 install_package docker-compose ''
 
 # docker-machine: Create Docker hosts locally and on cloud providers
-install_package docker-machine ''
+#install_package docker-machine ''
+
+# dvm: Docker Version Manager (Switch between different docker client versions)
+install_package dvm
 
 # findutils: Collection of GNU find, xargs, and locate
 install_package findutils ''
 
 # fleetctl: Distributed init system
-install_package fleetctl ''
+#install_package fleetctl ''
 
 # freetype: Software library to render fonts
 install_package freetype ''
@@ -163,29 +166,29 @@ install_package wget ''
 ########################################################################
 # Casks
 ########################################################################
-install_cask_package 1password
+#install_cask_package 1password
 install_cask_package alfred
 install_cask_package atom
 install_cask_package bartender
 install_cask_package caffeine
 #install_cask_package clamxav
-install_cask_package cleanmymac
+#install_cask_package cleanmymac
 install_cask_package colloquy
-install_cask_package fantastical
+#install_cask_package fantastical
 install_cask_package firefox
 install_cask_package font-inconsolata
 install_cask_package google-chrome
 install_cask_package intellij-idea
 install_cask_package iterm2
 install_cask_package java
-install_cask_package knock
+#install_cask_package knock
 install_cask_package macdown
 install_cask_package skype
 install_cask_package slack
 install_cask_package sonos
 install_cask_package spectacle
 install_cask_package spotify
-install_cask_package tunnelbear
+#install_cask_package tunnelbear
 install_cask_package virtualbox
 
 ########################################################################
