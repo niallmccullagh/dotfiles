@@ -23,3 +23,7 @@ export M2_HOME=`brew --prefix maven`/libexec
 
 # Give Maven dinner as it is hungry
 export MAVEN_OPTS="-Xms2048m -Xmx2048m -XX:PermSize=256m -XX:MaxPermSize=512m"
+
+# Go env settings
+export GOPATH="$HOME/dev/go-workspace"
+[[ -d "$GOPATH/bin" ]] && export PATH="$GOPATH/bin:$PATH";
