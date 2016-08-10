@@ -14,12 +14,6 @@ function install_cask_package() {
     [ $? -ne 0 ] && $failed_items="$failed_items $1"  # package failed to install.
 }
 
-# Ask for the administrator password upfront.
-sudo -v
-
-# Keep-alive: update existing `sudo` time stamp until the script has finished.
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
 # Make sure we’re using the latest Homebrew.
 brew update
 
@@ -195,12 +189,11 @@ install_cask_package virtualbox
 ########################################################################
 # Set bash v4 up
 ########################################################################
-if [ $(cat /private/etc/shells | grep "$(brew --prefix)/bin/bash" | wc -l) -eq 0 ]; then
-    sudo bash -c 'echo $(brew --prefix)/bin/bash >> /private/etc/shells'
-fi
-
-# Change the shell for the user
-chsh -s $(brew --prefix)/bin/bash
+# Switch to using brew-installed bash as default shell
+if ! fgrep -q "$(brew --prefix)/bin/bash" /etc/shells; then
+    echo "$(brew --prefix)/bin/bash" | sudo tee -a /etc/shells;
+    chsh -s $(brew --prefix)/bin/bash;
+fi;
 
 ########################################################################
 # Finish up
