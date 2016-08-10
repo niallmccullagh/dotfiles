@@ -47,4 +47,6 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # Initialise nodenv
 if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
 
+# Initialise docker version manager
 [[ -s "$(brew --prefix dvm)/dvm.sh" ]] && source "$(brew --prefix dvm)/dvm.sh"
+[[ -s "$(brew --prefix dvm)/bash_completion" ]] && source "$(brew --prefix dvm)/bash_completion"
