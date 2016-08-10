@@ -178,6 +178,7 @@ install_cask_package colloquy
 install_cask_package firefox
 install_cask_package font-inconsolata
 install_cask_package google-chrome
+install_cask_package gimp
 install_cask_package intellij-idea
 install_cask_package iterm2
 install_cask_package java
