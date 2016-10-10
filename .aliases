@@ -4,6 +4,8 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
+alias dev="cd ~/dev"
+
 # Listing
 alias ll='ls -al'
 
