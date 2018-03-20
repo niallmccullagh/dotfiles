@@ -28,3 +28,8 @@
 [push]
 	default = simple
 
+[user]
+	name = Niall McCullagh
+	email = niallmccullagh@users.noreply.github.com
+[pull]
+	rebase = true
