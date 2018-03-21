@@ -4,7 +4,7 @@ function title {
 
 function alphanumpassword {
   local length=${1:-53} 
-  cat /dev/random | LC_ALL=C tr -dc "[:alnum:]" | tr '[:upper:]' '[:lower:]' | head -c $length;
+  cat /dev/random | LC_ALL=C tr -dc "[:alnum:]" | tr "[:upper:]" "[:lower:]:" | head -c $length;
 }
 
 function git-recur {
