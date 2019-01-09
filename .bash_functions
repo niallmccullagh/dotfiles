@@ -20,3 +20,6 @@ function git-recur {
     done
 }
 
+function aws_ip_from_private_dns_name() {
+    echo $(aws ec2 describe-instances --filters "{\"Name\":\"private-dns-name\", \"Values\":[\"$1*\"]}" --query='Reservations[0].Instances[0].PublicIpAddress' ) | tr -d '"'
+}
