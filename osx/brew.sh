@@ -25,6 +25,39 @@ brew tap caskroom/fonts
 brew tap caskroom/versions
 brew tap homebrew/dupes
 brew tap homebrew/versions
+brew tap niallmccullagh/taps
+
+# Heptio AWS Authenticator: K8S authentication using AWS creds
+install_package heptio-authenticator-aws ''
+
+# Terraform: Tool to build, change, and version infrastructure
+install_package terraform ''
+
+# Terraform landscape: Easier diff of terraform changes
+install_package terraform_landscape ''
+
+# SOPS: encryption of yaml files using AWS KMS
+install_package sops ''
+
+# kubernetes-helm: Package installer for kubernetes
+install_package kubernetes-helm ''
+
+# assume-role: Easy way to assume an AWS role
+install_package assume-role ''
+
+# yarn: Yet another package manager for javascript
+install_package yarn ''
+
+# GNU awk utility
+install_package gawk ''
+
+# watch: Executes a program periodically, showing output fullscreen
+install_package watch ''
+
+# Packer: Tool for creating identical machine images for multiple platforms
+install_package packer ''
+
+
 
 # ack: Search tool like grep, but optimized for programmers
 install_package ack ''
@@ -55,17 +88,8 @@ install_package docker ''
 # docker-compose: Isolated development environments using Docker
 install_package docker-compose ''
 
-# docker-machine: Create Docker hosts locally and on cloud providers
-#install_package docker-machine ''
-
-# dvm: Docker Version Manager (Switch between different docker client versions)
-install_package dvm
-
 # findutils: Collection of GNU find, xargs, and locate
 install_package findutils ''
-
-# fleetctl: Distributed init system
-#install_package fleetctl ''
 
 # freetype: Software library to render fonts
 install_package freetype ''
@@ -94,14 +118,8 @@ install_package groovy ''
 # jenv: Manage your Java environment
 install_package jenv ''
 
-# jmeter: Load testing and performance measurement application
-#install_package jmeter '  --with-plugins'
-
 # jq: Lightweight and flexible command-line JSON processor
 install_package jq ''
-
-# logstalgia: Web server access log visualizer
-#install_package logstalgia ''
 
 # macvim: GUI for vim, made for OS X
 install_package macvim ''
@@ -145,9 +163,6 @@ install_package ruby-build ''
 # ssh-copy-id: Add a public key to a remote machine's authorized_keys file
 install_package ssh-copy-id ''
 
-# tomcat: Implementation of Java Servlet and JavaServer Pages
-#install_package tomcat ''
-
 # tree: Display directories as trees (with optional color/HTML output)
 install_package tree ''
 
@@ -157,6 +172,21 @@ install_package vim '  --override-system-vi'
 # wget: Internet file retriever
 install_package wget ''
 
+# bat: Clone of cat(1) with syntax highlighting and Git integration
+install_package bat ''
+
+# fzf: Command-line fuzzy finder written in Go
+install_package fzf ''
+
+# adr-tools: CLI tool for working with Architecture Decision Records
+install_package adr-tools ''
+
+# shellcheck: Static analysis and lint tool, for (ba)sh scripts
+install_package shellcheck ''
+
+# watchman: Watch files and take action when they change
+install_package watchman ''
+
 ########################################################################
 # Casks
 ########################################################################
@@ -164,27 +194,30 @@ install_package wget ''
 install_cask_package alfred
 install_cask_package atom
 install_cask_package bartender
+install_cask_package beyond-compare
 install_cask_package caffeine
-#install_cask_package clamxav
-#install_cask_package cleanmymac
-install_cask_package colloquy
-#install_cask_package fantastical
+install_cask_package datagrip
+install_cask_package drawio
+install_cask_package fantastical
 install_cask_package firefox
 install_cask_package font-inconsolata
 install_cask_package google-chrome
+install_cask_package google-chrome-canary
 install_cask_package gimp
 install_cask_package intellij-idea
 install_cask_package iterm2
 install_cask_package java
-#install_cask_package knock
+install_cask_package knock
+install_cask_package little-snitch
 install_cask_package macdown
+install_cask_package postman 
 install_cask_package skype
 install_cask_package slack
-install_cask_package sonos
 install_cask_package spectacle
 install_cask_package spotify
-#install_cask_package tunnelbear
-install_cask_package virtualbox
+install_cask_package visual-studio-code
+install_cask_package webstorm
+install_cask_pacakge wireshark
 
 ########################################################################
 # Set bash v4 up
