@@ -23,8 +23,6 @@ brew upgrade --all
 brew tap caskroom/cask
 brew tap caskroom/fonts
 brew tap caskroom/versions
-brew tap homebrew/dupes
-brew tap homebrew/versions
 brew tap niallmccullagh/taps
 
 # Heptio AWS Authenticator: K8S authentication using AWS creds
@@ -38,6 +36,12 @@ install_package terraform_landscape ''
 
 # SOPS: encryption of yaml files using AWS KMS
 install_package sops ''
+
+# kubernetes cli: Kubernetes command-line interface
+install_package kubectl ''
+
+# kops: Production Grade K8s Installation, Upgrades, and Management
+install_package kops ''
 
 # kubernetes-helm: Package installer for kubernetes
 install_package kubernetes-helm ''
@@ -56,8 +60,6 @@ install_package watch ''
 
 # Packer: Tool for creating identical machine images for multiple platforms
 install_package packer ''
-
-
 
 # ack: Search tool like grep, but optimized for programmers
 install_package ack ''
@@ -197,6 +199,7 @@ install_cask_package bartender
 install_cask_package beyond-compare
 install_cask_package caffeine
 install_cask_package datagrip
+install_cask_package docker
 install_cask_package drawio
 install_cask_package fantastical
 install_cask_package firefox
@@ -206,6 +209,7 @@ install_cask_package google-chrome-canary
 install_cask_package gimp
 install_cask_package intellij-idea
 install_cask_package iterm2
+install_cask_package google-chat
 install_cask_package java
 install_cask_package knock
 install_cask_package little-snitch
