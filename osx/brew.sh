@@ -75,6 +75,9 @@ install_package bash ''
 #homebrew/versions/bash-completion2:
 install_package bash-completion2 ''
 
+#bash-git-prompt: Informative, fancy bash prompt for Git users
+install_package bash-git-prompt ''
+
 # caskroom/cask/brew-cask: [no description]
 install_package brew-cask ''
 

@@ -7,10 +7,15 @@ source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{path,bash_prompt,exports,aliases,bash_functions,extra,bash_completion.sh}; do
+for file in ~/.{path,exports,aliases,bash_functions,extra,bash_completion.sh}; do
         [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
+
+if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+  __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
+  source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
+fi
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;

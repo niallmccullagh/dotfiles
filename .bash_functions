@@ -47,3 +47,8 @@ function k_kibana() {
     open "http://localhost:9200/_plugin/kibana/"
     fg
 }
+
+# Used by bash-git-prompt
+function prompt_callback {
+    echo " $(kube_ps1)"
+}
