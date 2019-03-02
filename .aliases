@@ -30,3 +30,7 @@ command -v sha1sum > /dev/null || alias sha1sum="shasum"
 alias cat='bat'
 
 alias weather="curl wttr.in/belfast"
+
+
+alias k=kubectl
+complete -F _complete_alias k
