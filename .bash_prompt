@@ -9,4 +9,4 @@ export GIT_PS1_SHOWSTASHSTATE=true
 export GIT_PS1_SHOWUPSTREAM="auto"
 
 # My two line prompt
-export PS1="\[\`if [[ \$? = "0" ]]; then echo '\e[32m[\!]\e[0m'; else echo '\e[31m[\!]\e[0m' ; fi\`\e[36m\u@\h:\e[0m\e[94m\w\e[0m\$(__git_ps1) \n\$ "
+export PS1="\[\`if [[ \$? = "0" ]]; then echo '\e[32m[\!]\e[0m'; else echo '\e[31m[\!]\e[0m' ; fi \` \e[0m\e[94m\w\e[0m \$(kube_ps1)\$(__git_ps1) \n\$ "
