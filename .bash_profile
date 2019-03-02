@@ -2,6 +2,8 @@
 [[ -d "/usr/local/sbin" ]] && export PATH="/usr/local/sbin:$PATH";
 [[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH";
 
+source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
@@ -23,14 +25,17 @@ for option in autocd globstar; do
 done;
 
 # Add tab completion for many Bash commands
-if which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
-	source "$(brew --prefix)/share/bash-completion/bash_completion";
-elif [ -f /etc/bash_completion ]; then
-	source /etc/bash_completion;
-fi;
+if type brew &>/dev/null; then
+  for COMPLETION in $(brew --prefix)/etc/bash_completion.d/*
+  do
+    [[ -f $COMPLETION ]] && source "$COMPLETION"
+  done
+  if [[ -f $(brew --prefix)/etc/profile.d/bash_completion.sh ]];
+  then
+    source "$(brew --prefix)/etc/profile.d/bash_completion.sh"
+  fi
+fi
 
-# Enable tab completion for git
-which brew > /dev/null && [[ -f "$(brew --prefix)/etc/bash_completion.d/git-completion.bash" ]] && source "$(brew --prefix)/etc/bash_completion.d/git-completion.bash"
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
@@ -39,14 +44,11 @@ which brew > /dev/null && [[ -f "$(brew --prefix)/etc/bash_completion.d/git-comp
 set -o vi
 
 # Initialise jenv
-if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+#if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
 # Initialise rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+#if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Initialise nodenv
 if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
 
-# Initialise docker version manager
-[[ -s "$(brew --prefix dvm)/dvm.sh" ]] && source "$(brew --prefix dvm)/dvm.sh"
-[[ -s "$(brew --prefix dvm)/bash_completion" ]] && source "$(brew --prefix dvm)/bash_completion"
