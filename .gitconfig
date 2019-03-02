@@ -33,3 +33,20 @@
 	email = niallmccullagh@users.noreply.github.com
 [pull]
 	rebase = true
+
+[alias]
+	branches = branch -a
+	tags = tag
+	stashes = stash list
+	remotes = remote -v
+	unstage = reset -q HEAD
+	discard = checkout --
+
+	uncommit = reset --mixed HEAD~
+	amend = commit --amend
+
+        # unstages changes in the index, discards changes in the working directory, and removes any new files.
+	nevermind = !git reset --hard HEAD && git clean -d -f
+
+	# Prune remote branches that have been deleted
+	prune-remote-branches = remote prune origin
