@@ -19,7 +19,7 @@ export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
 # Set Maven home directory
-export M2_HOME=`brew --prefix maven`/libexec
+export M2_HOME=/usr/local/opt/maven/libexec
 
 # Give Maven dinner as it is hungry
 export MAVEN_OPTS="-Xms2048m -Xmx2048m -XX:PermSize=256m -XX:MaxPermSize=512m"
