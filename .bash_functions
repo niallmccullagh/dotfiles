@@ -7,6 +7,19 @@ function alphanumpassword {
   cat /dev/random | LC_ALL=C tr -dc "[:alnum:]" | tr "[:upper:]" "[:lower:]:" | head -c $length;
 }
 
+function recur-in-git {
+    echo "Running git $@ recursively"
+    local directories=$(find . -type d -depth 2 -name .git | xargs -n 1 dirname)
+    for directory in $directories; do
+      echo "###################################################################";
+      echo "Running git $@ in $directory"
+      echo "###################################################################";
+      pushd $directory > /dev/null 2>&1;
+      $@;
+      popd > /dev/null 2>&1;
+    done
+}
+
 function git-recur {
     echo "Running git $@ recursively"
     local directories=$(find . -type d -depth 2 -name .git | xargs -n 1 dirname)
