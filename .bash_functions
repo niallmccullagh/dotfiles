@@ -65,3 +65,7 @@ function k_kibana() {
 function prompt_callback {
     echo " $(kube_ps1)"
 }
+
+function ecr-docker-login() {
+  $(aws ecr get-login --no-include-email)
+}
