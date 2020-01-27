@@ -37,6 +37,9 @@ install_package terraform_landscape ''
 # SOPS: encryption of yaml files using AWS KMS
 install_package sops ''
 
+# kubernetes PS1: Kubernetes command-line prompt
+install_package kube-ps1 ''
+
 # kubernetes cli: Kubernetes command-line interface
 install_package kubectl ''
 
