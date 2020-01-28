@@ -6,7 +6,7 @@
 	ui = true
 
 [diff]
-        # Use beyond compare as the diff tool
+    # Use beyond compare as the diff tool
 	tool = bc3
 
 	# Include summaries of merged commits in newly created merge commit messages
@@ -17,10 +17,10 @@
 
 [help]
 	# Automatically correct and execute mistyped commands
-	autocorrect = 1
+	autocorrect = 2
 
 [hub]
-        protocol = https
+    protocol = https
 
 [merge]
 	tool = bc3
@@ -45,8 +45,12 @@
 	uncommit = reset --mixed HEAD~
 	amend = commit --amend
 
-        # unstages changes in the index, discards changes in the working directory, and removes any new files.
+    # unstages changes in the index, discards changes in the working directory, and removes any new files.
 	nevermind = !git reset --hard HEAD && git clean -d -f
 
 	# Prune remote branches that have been deleted
 	prune-remote-branches = remote prune origin
+
+	plog = log --graph --pretty='format:%C(red)%d%C(reset) %C(yellow)%h%C(reset) %ar %C(green)%aN%C(reset) %s'
+
+    s = status -sb
