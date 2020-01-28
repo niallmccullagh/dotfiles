@@ -23,10 +23,12 @@ brew upgrade --all
 brew tap caskroom/cask
 brew tap caskroom/fonts
 brew tap caskroom/versions
-brew tap niallmccullagh/taps
 
-# Heptio AWS Authenticator: K8S authentication using AWS creds
-install_package heptio-authenticator-aws ''
+# jetbrains-npm: Fix IntelliJ/WebStorm's npm integration under nodenv
+install_package jetbrains-npm ''
+
+# AWS IAM Authenticator: K8S authentication using AWS creds
+install_package aws-iam-authenticator ''
 
 # Terraform: Tool to build, change, and version infrastructure
 install_package terraform ''
@@ -40,6 +42,12 @@ install_package sops ''
 # kubernetes PS1: Kubernetes command-line prompt
 install_package kube-ps1 ''
 
+# kubectx: Tool that can switch between kubectl contexts easily and create aliases
+install_package kubectx ''
+
+# kustomize: Template-free customization of Kubernetes YAML manifests
+install_package kustomize ''
+
 # kubernetes cli: Kubernetes command-line interface
 install_package kubectl ''
 
@@ -51,9 +59,6 @@ install_package kubernetes-helm ''
 
 # assume-role: Easy way to assume an AWS role
 install_package assume-role ''
-
-# yarn: Yet another package manager for javascript
-install_package yarn ''
 
 # GNU awk utility
 install_package gawk ''
@@ -140,6 +145,9 @@ install_package maven ''
 
 # ngrepetwork grep
 install_package ngrep ''
+
+# node_build: Install NodeJS versions
+install_package node-build ''
 
 # nodenv: Manage multiple NodeJS versions
 install_package nodenv ''
