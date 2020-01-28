@@ -2,8 +2,6 @@
 [[ -d "/usr/local/sbin" ]] && export PATH="/usr/local/sbin:$PATH";
 [[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH";
 
-source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
-
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
@@ -12,8 +10,15 @@ for file in ~/.{path,exports,aliases,bash_functions,extra,bash_completion.sh}; d
 done;
 unset file;
 
+# Kubernetes PS1 Prompt (Printed by Git Prompt below)
+source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+
+# Git Prompt
+# Sets PS1 inside and outside of git repos
+# Theme is configured in the ~/.git-prompt-colors.sh file
 if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
   __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
+  GIT_PROMPT_IGNORE_SUBMODULES=1 # Disable as checking the status of submodules can be very slow
   source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
 fi
 
