@@ -1,4 +1,4 @@
-declare -a arr=(".aliases" ".gitconfig" ".bash_profile" ".bashrc" ".exports" ".git-prompt.sh" ".bash_functions" ".vimrc" ".vim" ".bash_completion.sh" ".git-prompt-colors.sh")
+declare -a arr=(".aliases" ".bash_completion.sh" ".bash_functions" ".bash_profile" ".bashrc" ".exports" ".git-prompt-colors.sh" ".gitconfig" ".inputrc" ".vimrc" ".vim")
 dest_dir=~
 cwd=$(pwd)
 
