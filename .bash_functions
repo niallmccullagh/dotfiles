@@ -67,5 +67,8 @@ function prompt_callback {
 }
 
 function ecr-docker-login() {
-  $(aws ecr get-login --no-include-email)
+  eval $(aws ecr get-login --no-include-email)
 }
+
+function aws-start-session() { eval $( mfa-start-session $@); }
+function aws-assume-role() { eval $( assume-role $@); }	
