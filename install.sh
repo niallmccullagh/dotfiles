@@ -1,8 +1,9 @@
-declare -a arr=(".aliases" ".bash_completion.sh" ".bash_functions" ".bash_profile" ".bashrc" ".exports" ".git-prompt-colors.sh" ".gitconfig" ".inputrc" ".vimrc" ".vim")
+declare -a arr=(".aliases" ".bash_completion.sh" ".bash_functions" ".bash_profile" ".bashrc" ".exports" ".git-prompt-colors.sh" ".gitconfig" ".inputrc" ".vimrc" ".vim" "bin")
 dest_dir=~
 cwd=$(pwd)
 
-[[ -L $HOME/.vim ]] && echo Deleting ~/.vim sym link && rm -f $HOME/.vim
+[[ -L $HOME/.vim ]] && echo "Deleting ~/.vim sym link" && rm -f $HOME/.vim
+[[ -L $HOME/bin ]] && echo "Deleting ~/bin sym link" && rm -f $HOME/bin
 
 echo $cwd
 

@@ -27,3 +27,9 @@ export MAVEN_OPTS="-Xms2048m -Xmx2048m -XX:PermSize=256m -XX:MaxPermSize=512m"
 # Go env settings
 export GOPATH="$HOME/dev/go-workspace"
 [[ -d "$GOPATH/bin" ]] && export PATH="$GOPATH/bin:$PATH";
+
+# Add gnu sed to path if it has been installed
+[[ -d $(brew --prefix)/opt/gnu-sed/libexec/gnubin ]] && export PATH="$(brew --prefix)/opt/gnu-sed/libexec/gnubin:$PATH";
+
+# Add gnu grep to path if it has been installed
+[[ -d $(brew --prefix)/opt/grep/libexec/gnubin ]] && export PATH="$(brew --prefix)/opt/grep/libexec/gnubin:$PATH";

@@ -4,8 +4,7 @@ As with any script on the internet, you should review both the `brew.sh` and `se
 
 ## Install Brewable applications
 
-1. Install [Homebrew](http://brew.sh)
-2. Install brewable apps
+1. Install brewable apps
 
         ./brew.sh
 
@@ -13,7 +12,7 @@ As with any script on the internet, you should review both the `brew.sh` and `se
 
 Run this in iTerm as it kills Terminal at the end
 
-    ./settings.sh
+    ./macos.sh
     
 ## Load iTerm settings
 
