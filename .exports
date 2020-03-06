@@ -22,7 +22,7 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 export M2_HOME=/usr/local/opt/maven/libexec
 
 # Give Maven dinner as it is hungry
-export MAVEN_OPTS="-Xms2048m -Xmx2048m -XX:PermSize=256m -XX:MaxPermSize=512m"
+export MAVEN_OPTS="-Xms2048m"
 
 # Go env settings
 export GOPATH="$HOME/dev/go-workspace"
