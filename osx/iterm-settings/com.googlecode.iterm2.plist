@@ -72,7 +72,7 @@
 	<key>NSWindow Frame NSColorPanel</key>
 	<string>0 128 224 275 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>233 161 1145 588 0 0 1440 877 </string>
+	<string>233 297 585 452 0 0 1440 877 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -766,7 +766,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>8475EAC4-FFB3-4EE1-BBDC-595F9F2CD206</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>5</integer>
+	<integer>9</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1522,6 +1522,8 @@
 	<string>~/dev/dotfiles/osx/iterm-settings</string>
 	<key>PromptOnQuit</key>
 	<false/>
+	<key>QuitWhenAllWindowsClosed</key>
+	<true/>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
@@ -1531,7 +1533,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-02-22T14:01:40Z</date>
+	<date>2020-02-22T18:30:01Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SoundForEsc</key>
