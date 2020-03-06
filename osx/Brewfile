@@ -33,6 +33,7 @@ brew "shellcheck"
 brew "dnsmasq"
 brew "jq"
 brew "vim"
+brew "sshuttle"
 
 ############################################################
 # Version Control
