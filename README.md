@@ -82,6 +82,29 @@ git config --global user.email "$GIT_AUTHOR_EMAIL"
 
 You could also use `~/.extra` to override settings, functions and aliases from my dotfiles repository. It’s probably better to [fork this repository](https://github.com/niallmccullagh/dotfiles/fork) instead, though.
 
+### Clone GitHub organization or team repositories
+
+Install the GitHub CLI (`gh`) and run `gh auth login`. From the directory where
+you want the checkouts, run one of these commands.
+
+```bash
+clone-github -o ORGANIZATION
+clone-github -o ORGANIZATION -t TEAM_SLUG
+```
+
+New checkouts use SSH, so your SSH key also needs access to the repositories.
+Existing checkouts with a matching origin are updated with a fast-forward-only
+pull.
+
+### Log Docker in to Amazon ECR
+
+Pass the registry hostname and the AWS region it belongs to. You can also pass
+`--profile` to select an AWS CLI profile.
+
+```bash
+ecr-docker-login ACCOUNT.dkr.ecr.REGION.amazonaws.com --region REGION
+```
+
 ### OSX
 
 Have a look in the [OSX](osx/README.md) folder where there are scripts to set some sensible osx defaults and a list of useful homebrew installable applications.

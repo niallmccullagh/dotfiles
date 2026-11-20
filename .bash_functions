@@ -60,7 +60,19 @@ function prompt_callback {
 }
 
 function ecr-docker-login() {
-  eval $(aws ecr get-login --no-include-email)
+  if [[ -z ${1:-} ]]; then
+    printf 'Usage: ecr-docker-login REGISTRY [AWS_CLI_OPTIONS...]\n' >&2
+    return 2
+  fi
+
+  local registry=$1 password
+  shift
+  password=$(aws ecr get-login-password "$@") || return "$?"
+  if [[ -z $password ]]; then
+    printf 'AWS returned an empty ECR password.\n' >&2
+    return 1
+  fi
+  printf '%s\n' "$password" | docker login --username AWS --password-stdin -- "$registry"
 }
 
 function aws-start-session() { eval $( mfa-start-session $@); }
