@@ -1,0 +1,8 @@
+[tools]
+node = "24.14.0"
+ruby = "2.7.2"
+
+[settings]
+idiomatic_version_file_enable_tools = ["node", "ruby"]
+# Keep Node selection tied to version files such as .node-version and .nvmrc.
+idiomatic_version_file_disable_files = ["node:package.json"]

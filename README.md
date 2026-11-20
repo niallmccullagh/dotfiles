@@ -6,23 +6,45 @@ Collection of dotfiles as I'm tired of recreating these.
 
 **Warning:** If you want to give these dotfiles a try, you should first fork this repository, review the code, and remove things you don’t want or need. Don’t blindly use my settings unless you know what that entails. Use at your own risk!
 
-### Using Git and the bootstrap script
+### Apply the dotfiles
 
-You can clone the repository wherever you want. (I like to keep it in `~/Projects/dotfiles`, with `~/dotfiles` as a symlink.) The install script will pull in the latest version and link the files to your home folder.
-
-```bash
-git clone https://github.com/niallmccullagh/dotfiles.git && cd dotfiles && ./install.sh
-```
-
-### Git-free install
-
-To install these dotfiles without Git:
+Install [mise](https://mise.jdx.dev/installing-mise.html) and put it on your
+`PATH`. Clone this repo where you want to keep it. The links in your home
+directory point back to that checkout. If you already have a checkout, run the
+commands there.
 
 ```bash
-mkdir -p ~/Projects/dotfiles; cd ~/Projects/dotfiles; curl -#L https://github.com/niallmccullagh/dotfiles/tarball/master | tar -xzv --strip-components 1 --exclude={README.md,bootstrap.sh,LICENSE-MIT.txt} && ./install.sh
+git clone https://github.com/niallmccullagh/dotfiles.git
+cd dotfiles
+git submodule update --init --recursive
+mise trust ./mise.toml
+mise bootstrap --only dotfiles --dry-run
+mise bootstrap --only dotfiles
 ```
 
-To update later on, just run that command again.
+Review any conflicts reported by the preview and move existing files you want
+to keep aside before applying. To update, pull in the checkout, update the Vim
+submodules, and preview and apply again if the link manifest changed.
+
+### Install Node and Ruby
+
+The linked mise config sets Node 24.14.0 and Ruby 2.7.2 as defaults and reads
+project pins from `.node-version`, `.nvmrc`, and `.ruby-version`. On a new Mac,
+set up [Homebrew packages](osx/README.md) first, then run `mise install`.
+
+On a machine with existing nodenv or rbenv installs, you can register them in
+mise before installing anything. This also preserves packages and gems stored
+with those runtimes. Run these commands for the versions you already have:
+
+```bash
+mise link node@24.14.0 "$HOME/.nodenv/versions/24.14.0"
+mise link ruby@2.7.2 "$HOME/.rbenv/versions/2.7.2"
+```
+
+Open a new Bash session (for example, `bash -l`) and check `node --version`
+and `ruby --version`. Repeat the checks inside projects that use their own
+version pins. Run `mise install` from the project directory when its pinned
+version is missing.
 
 ### Specify the `$PATH`
 
@@ -36,7 +58,7 @@ export PATH="/usr/local/bin:$PATH"
 
 ### Add custom commands without creating a new fork
 
-If `~/.extra` exists, it will be sourced along with the other files. You can use this to add a few custom commands without the need to fork this entire repository, or to add commands you don’t want to commit to a public repository.
+If `~/.extra` exists, it will be sourced along with the other files. You can use this for machine-local settings and environment variables. Keep credentials outside this repository.
 
 My `~/.extra` looks something like this:
 

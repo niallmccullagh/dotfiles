@@ -1,14 +1,7 @@
-tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/core"
-tap "remind101/formulae"
-tap "nodenv/nodenv"
-
 ############################################################
 # *nix
 ############################################################
 brew "ack"
-brew "openssl@1.1"
 brew "openssh"
 brew "bash"
 brew "bash-completion@2"
@@ -47,17 +40,13 @@ brew "markdown"
 brew "adr-tools"
 
 ############################################################
-# Langauges
+# Languages
 ############################################################
 brew "go"
 brew "jenv"
 brew "maven"
 brew "gradle"
 brew "groovy"
-brew "nodenv"
-brew "node-build"
-brew "rbenv"
-brew "ruby-build"
 brew "python"
 
 ############################################################
@@ -67,19 +56,11 @@ brew "docker"
 brew "docker-compose"
 
 ############################################################
-# Cloud Provisioning
-############################################################
-brew "packer"
-brew "terraform"
-brew "terraform_landscape"
-
-############################################################
-# AWS 
+# AWS
 ############################################################
 brew "awscli"
 brew "aws-iam-authenticator"
 brew "sops"
-brew "remind101/formulae/assume-role"
 
 ############################################################
 # Kubernetes
@@ -101,25 +82,17 @@ brew "lastpass-cli"
 cask "alfred"
 cask "bartender"
 cask "beyond-compare"
-cask "caffeine"
 cask "google-chrome"
-cask "docker"
+cask "docker-desktop"
 cask "drawio"
 cask "firefox"
 cask "gimp"
 cask "iterm2"
-cask "java"
+cask "temurin@21"
 cask "little-snitch"
-cask "macdown"
 cask "postman"
-cask "skype"
 cask "slack"
-cask "spectacle"
 cask "spotify"
 cask "lastpass"
 
-cask "atom"
-cask "intellij-idea"
-brew "jetbrains-npm"
 cask "visual-studio-code"
-cask "webstorm"
