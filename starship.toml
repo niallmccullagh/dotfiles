@@ -1,11 +1,29 @@
-add_newline = false
-format = "$directory$git_branch$kubernetes$line_break$character"
+[character]
+success_symbol = "[➜](bold green)"
 
-[git_branch]
-symbol = "git:"
-format = '[$symbol$branch]($style) '
+[[battery.display]]
+threshold = 25
+style = "bold red"
+
+[aws]
+format = 'on[ ☁️ $profile (\[$duration\] )]($style)'
 
 [kubernetes]
+format = '[⛵ $context \($namespace\)](dimmed green) '
 disabled = false
-symbol = "☸ "
-format = '[$symbol$context(:$namespace)]($style) '
+
+[git_branch]
+ignore_branches = ["master", "main"]
+
+[nodejs]
+format = "via [$symbol$version](bold green) "
+disabled = false
+
+[python]
+disabled = true
+
+[package]
+disabled = true
+
+[gcloud]
+disabled = true
