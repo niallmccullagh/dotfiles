@@ -20,3 +20,20 @@
 [[ -r "$HOME/.config/dotfiles/zshrc" ]] && source "$HOME/.config/dotfiles/zshrc"
 ''' }
 "~/bin" = { source = "bin", mode = "symlink" }
+[dotfiles."~/.omp/agent"]
+source = ".omp/agent"
+mode = "symlink-each"
+exclude = [
+  "sessions",
+  "terminal-sessions",
+  "predict",
+  "cache",
+  "blobs",
+  "*.db",
+  "*.db-wal",
+  "*.db-shm",
+  "*.lock",
+  "*.work.yml",
+  "last-changelog-version",
+  "mcp.json",
+]

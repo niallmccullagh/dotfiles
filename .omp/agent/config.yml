@@ -1,0 +1,25 @@
+modelRoles:
+  default: openai-codex/gpt-5.6-sol:medium
+symbolPreset: unicode
+composer:
+  shape: rail
+theme:
+  dark: titanium
+  light: light
+update:
+  auto: true
+setupVersion: 3
+contextFiles:
+  extra:
+    - AGENTS.local.md
+statusLine:
+  transparent: true
+  separator: pipe
+tui:
+  completeScrollback: true
+display:
+  showTokenUsage: true
+  cacheMissMarker: true
+  showTurnTime: true
+plan:
+  enabled: true
