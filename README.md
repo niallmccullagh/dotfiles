@@ -63,6 +63,23 @@ Zsh uses its own completion system and caches it in `.zcompdump`. If a Homebrew
 completion is missing, run `autoload -Uz compaudit; compaudit` in Zsh to check
 the completion directories. Zsh skips entries that fail its permission audit.
 
+### Oh My Pi
+
+The dotfiles manifest manages selected files in `~/.omp/agent` with
+`symlink-each`. OMP's sessions, caches, prediction data, databases, locks, and
+machine-local MCP configuration remain unmanaged.
+
+Preview and apply the managed OMP files with the normal dotfile commands:
+
+```bash
+mise bootstrap --only dotfiles --dry-run
+mise bootstrap --only dotfiles
+```
+
+If `~/.omp/agent/config.yml` already exists as a regular file, compare it with
+`.omp/agent/config.yml` and move it aside before applying. Restart OMP after
+changing files in `.omp/agent/commands`.
+
 ### Specify the `$PATH`
 
 Bash and Zsh source `~/.path` before setting the shared exports in login shells and
