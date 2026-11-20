@@ -9,9 +9,6 @@
     # Use beyond compare as the diff tool
 	tool = bc3
 
-	# Include summaries of merged commits in newly created merge commit messages
-	log = true
-
 [difftool]
 	prompt = false
 
@@ -24,6 +21,8 @@
 
 [merge]
 	tool = bc3
+	# Include summaries of merged commits in newly created merge commit messages
+	log = true
 
 [push]
 	default = current

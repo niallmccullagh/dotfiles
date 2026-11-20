@@ -35,9 +35,6 @@ export LC_ALL='en_US.UTF-8';
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
-# Set Maven home directory
-export M2_HOME=/usr/local/opt/maven/libexec
-
 # Give Maven dinner as it is hungry
 export MAVEN_OPTS="-Xms2048m"
 
