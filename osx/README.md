@@ -17,10 +17,14 @@ brew bundle upgrade --file osx/Brewfile
 ```
 
 Keep automatic updates enabled in apps that update themselves, including iTerm2.
-Docker Desktop supplies its own CLI and Compose. If you use those, check
-`command -v docker` and `docker compose version` before removing the standalone
-formulae. A copy of Docker Desktop installed outside Homebrew may appear as
-missing in the bundle check.
+Docker Desktop supplies the Docker CLI and Compose. If `docker` is missing,
+check Docker Desktop's CLI tools installation setting, then verify with
+`command -v docker` and `docker compose version`. A copy of Docker Desktop
+installed outside Homebrew may appear as missing in the bundle check.
+
+macOS supplies `ssh-copy-id`. Use `7zz` for 7-Zip archives and `./gradlew`
+in projects with a Gradle wrapper. The Brewfile installs Temurin 21, and
+projects that need a different JDK can pin it through mise.
 
 ### AWS profiles
 
@@ -30,6 +34,10 @@ in place of the old `aws-assume-role` helper. Check which account and role a
 profile selects with `aws --profile PROFILE sts get-caller-identity`. For tools
 that use the AWS SDK, set `AWS_PROFILE=PROFILE` in a fresh shell so previously
 exported AWS credentials do not take precedence.
+
+For Amazon EKS, `aws eks update-kubeconfig` creates entries that use
+`aws eks get-token`. Update any entries that still call
+`aws-iam-authenticator` before removing the old binary.
 
 ## Apply macOS preferences
 

@@ -2,13 +2,16 @@
 [[ -d "/usr/local/sbin" ]] && export PATH="/usr/local/sbin:$PATH";
 [[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH";
 
+_dotfiles_shell=bash
+[[ -n "${ZSH_VERSION:-}" ]] && _dotfiles_shell=zsh
 if command -v brew >/dev/null 2>&1; then
-  eval "$(brew shellenv)"
+  eval "$(brew shellenv "$_dotfiles_shell")"
 elif [[ -x /opt/homebrew/bin/brew ]]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+  eval "$(/opt/homebrew/bin/brew shellenv "$_dotfiles_shell")"
 elif [[ -x /usr/local/bin/brew ]]; then
-  eval "$(/usr/local/bin/brew shellenv)"
+  eval "$(/usr/local/bin/brew shellenv "$_dotfiles_shell")"
 fi
+unset _dotfiles_shell
 
 # Allow machine-local PATH additions before the standard tool directories.
 if [[ -r "$HOME/.path" && -f "$HOME/.path" ]]; then
@@ -21,11 +24,9 @@ export EDITOR='vim';
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
 export PYTHONIOENCODING='UTF-8';
 
-# Increase Bash history size. Allow 32³ entries; the default is 500.
-export HISTSIZE='32768';
-export HISTFILESIZE="${HISTSIZE}";
-# Omit duplicates and commands that begin with a space from history.
-export HISTCONTROL='ignoreboth';
+if [[ -n "${BASH_VERSION:-}" ]]; then
+  export HISTSIZE=32768 HISTFILESIZE=32768 HISTCONTROL=ignoreboth
+fi
 
 # Prefer US English and use UTF-8.
 export LANG='en_US.UTF-8';
@@ -65,4 +66,16 @@ _dotfiles_dedupe_path() {
   done
   result=${result#:}
   export PATH="${result%:}"
+}
+
+_dotfiles_starship_config() {
+  [[ -z "${STARSHIP_CONFIG:-}" ]] || return 0
+  local config
+  for config in "${XDG_CONFIG_HOME:-$HOME/.config}/starship.toml" \
+    "$HOME/.config/starship.toml" "$HOME/.config/dotfiles/starship.toml"; do
+    if [[ -f "$config" && -r "$config" ]]; then
+      export STARSHIP_CONFIG="$config"
+      return 0
+    fi
+  done
 }

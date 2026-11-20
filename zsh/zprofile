@@ -1,0 +1,14 @@
+# Interactive login shells get the same environment as other interactive shells.
+[[ ! -o interactive ]] || return 0
+
+[[ -f "$HOME/.exports" && -r "$HOME/.exports" ]] && source "$HOME/.exports"
+[[ -f "$HOME/.extra" && -r "$HOME/.extra" ]] && source "$HOME/.extra"
+
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh --shims)"
+fi
+
+if (( $+functions[_dotfiles_dedupe_path] )); then
+  _dotfiles_dedupe_path
+  unset -f _dotfiles_dedupe_path
+fi
