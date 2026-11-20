@@ -44,11 +44,13 @@ mise link ruby@2.7.2 "$HOME/.rbenv/versions/2.7.2"
 Open a new Bash session (for example, `bash -l`) and check `node --version`
 and `ruby --version`. Repeat the checks inside projects that use their own
 version pins. Run `mise install` from the project directory when its pinned
-version is missing.
+version is missing. Non-interactive Bash login shells use mise shims so
+commands resolve the configured runtime from their working directory.
 
 ### Specify the `$PATH`
 
-If `~/.path` exists, it will be sourced along with the other files, before any feature testing (such as detecting which version of `ls` is being used) takes place.
+Bash sources `~/.path` before loading the shared exports in login shells and
+interactive shells.
 
 Here’s an example `~/.path` file that adds `/usr/local/bin` to the `$PATH`:
 
@@ -58,7 +60,12 @@ export PATH="/usr/local/bin:$PATH"
 
 ### Add custom commands without creating a new fork
 
-If `~/.extra` exists, it will be sourced along with the other files. You can use this for machine-local settings and environment variables. Keep credentials outside this repository.
+Bash sources `~/.extra` in login shells and interactive shells. You can use
+this file for machine-local settings and environment variables. In interactive
+shells, Bash loads it after the default aliases and functions so you can
+override them. Guard interactive-only commands with a check for `$- == *i*`
+when the same file is used by non-interactive login shells. Keep credentials
+outside this repository.
 
 My `~/.extra` looks something like this:
 

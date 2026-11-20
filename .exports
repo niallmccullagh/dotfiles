@@ -1,3 +1,20 @@
+# Add `~/bin` to the `$PATH`
+[[ -d "/usr/local/sbin" ]] && export PATH="/usr/local/sbin:$PATH";
+[[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH";
+
+if command -v brew >/dev/null 2>&1; then
+  eval "$(brew shellenv)"
+elif [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -x /usr/local/bin/brew ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+# Allow machine-local PATH additions before the standard tool directories.
+if [[ -r "$HOME/.path" && -f "$HOME/.path" ]]; then
+  source "$HOME/.path"
+fi
+
 # Make vim the default editor.
 export EDITOR='vim';
 
@@ -37,3 +54,18 @@ if [[ -n "${HOMEBREW_PREFIX:-}" ]]; then
 fi
 
 export PATH="$HOME/.local/bin:$PATH"
+
+# Keep the first occurrence of each entry, including any empty entry.
+_dotfiles_dedupe_path() {
+  local remaining="$PATH:" entry result=:
+  while [[ $remaining == *:* ]]; do
+    entry=${remaining%%:*}
+    remaining=${remaining#*:}
+    case $result in
+      *":$entry:"*) ;;
+      *) result="$result$entry:" ;;
+    esac
+  done
+  result=${result#:}
+  export PATH="${result%:}"
+}
