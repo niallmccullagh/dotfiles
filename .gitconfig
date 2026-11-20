@@ -57,3 +57,5 @@
 	plog = log --graph --pretty='format:%C(red)%d%C(reset) %C(yellow)%h%C(reset) %ar %C(green)%aN%C(reset) %s'
 
     s = status -sb
+[init]
+	defaultBranch = main

@@ -45,15 +45,8 @@ for option in autocd globstar; do
 done;
 
 # Add tab completion for many Bash commands
-if type brew &>/dev/null; then
-  for COMPLETION in $(brew --prefix)/etc/bash_completion.d/*
-  do
-    [[ -f $COMPLETION ]] && source "$COMPLETION"
-  done
-  if [[ -f $(brew --prefix)/etc/profile.d/bash_completion.sh ]];
-  then
-    source "$(brew --prefix)/etc/profile.d/bash_completion.sh"
-  fi
+if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]; then
+  source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
 fi
 
 
