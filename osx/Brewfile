@@ -69,6 +69,7 @@ brew "lastpass-cli"
 # Applications
 ############################################################
 #cask "1password"
+cask "font-jetbrains-mono-nerd-font"
 cask "alfred"
 cask "bartender"
 cask "beyond-compare"
