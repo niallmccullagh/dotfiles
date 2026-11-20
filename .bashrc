@@ -1,1 +1,3 @@
-[ -n "$PS1" ] && source ~/.bash_profile;
+if [[ $- == *i* ]]; then
+  source ~/.bash_profile
+fi

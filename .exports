@@ -28,8 +28,12 @@ export MAVEN_OPTS="-Xms2048m"
 export GOPATH="$HOME/dev/go-workspace"
 [[ -d "$GOPATH/bin" ]] && export PATH="$GOPATH/bin:$PATH";
 
-# Add gnu sed to path if it has been installed
-[[ -d $(brew --prefix)/opt/gnu-sed/libexec/gnubin ]] && export PATH="$(brew --prefix)/opt/gnu-sed/libexec/gnubin:$PATH";
+# Prefer GNU sed and grep when Homebrew has installed them.
+if [[ -n "${HOMEBREW_PREFIX:-}" ]]; then
+  for gnubin in "$HOMEBREW_PREFIX"/opt/{gnu-sed,grep}/libexec/gnubin; do
+    [[ -d "$gnubin" ]] && export PATH="$gnubin:$PATH"
+  done
+  unset gnubin
+fi
 
-# Add gnu grep to path if it has been installed
-[[ -d $(brew --prefix)/opt/grep/libexec/gnubin ]] && export PATH="$(brew --prefix)/opt/grep/libexec/gnubin:$PATH";
+export PATH="$HOME/.local/bin:$PATH"

@@ -1,22 +1,21 @@
-#OSX Setup
+# macOS setup
 
-As with any script on the internet, you should review both the `brew.sh` and `settings.sh` files to understand what they do/set/install.
+## Install Homebrew packages
 
-## Install Brewable applications
+Install [Homebrew](https://docs.brew.sh/Installation) and follow its instructions
+to put `brew` on your `PATH`. From the repository root, review the Brewfile and run:
 
-1. Install brewable apps
-
-        ./brew.sh
+```bash
+brew bundle install --file osx/Brewfile --no-upgrade
+```
 
 ## Set OSX settings
 
-Run this in iTerm as it kills Terminal at the end
-
-    ./macos.sh
+Review `osx/macos.sh` before running it. It includes privileged commands and
+quits several apps, including Terminal. Run any settings you still want from
+iTerm. This script is separate from the mise bootstrap.
     
 ## Load iTerm settings
 
-1. `open import-solarized-to-iterm`
-1. Open iTerm
-1. Open Preferences | General
-1. Type `~/Projects/dotfiles/osx/iterm-settings` in the Load Preferences from a custom folder or url box
+1. Open iTerm2 settings and find the option to load preferences from a custom folder or URL.
+2. Select the `osx/iterm-settings` folder in your checkout.

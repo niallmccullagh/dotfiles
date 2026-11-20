@@ -1,0 +1,14 @@
+[dotfiles]
+"~/.aliases" = { source = ".aliases", mode = "symlink" }
+"~/.bash_completion.sh" = { source = ".bash_completion.sh", mode = "symlink" }
+"~/.bash_functions" = { source = ".bash_functions", mode = "symlink" }
+"~/.bash_profile" = { source = ".bash_profile", mode = "symlink" }
+"~/.bashrc" = { source = ".bashrc", mode = "symlink" }
+"~/.config/mise/config.toml" = { source = "mise/config.toml", mode = "symlink" }
+"~/.exports" = { source = ".exports", mode = "symlink" }
+"~/.git-prompt-colors.sh" = { source = ".git-prompt-colors.sh", mode = "symlink" }
+"~/.gitconfig" = { source = ".gitconfig", mode = "symlink" }
+"~/.inputrc" = { source = ".inputrc", mode = "symlink" }
+"~/.vimrc" = { source = ".vimrc", mode = "symlink" }
+"~/.vim" = { source = ".vim", mode = "symlink" }
+"~/bin" = { source = "bin", mode = "symlink" }
