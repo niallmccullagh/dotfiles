@@ -71,4 +71,3 @@ function ecr-docker-login() {
 }
 
 function aws-start-session() { eval $( mfa-start-session $@); }
-function aws-assume-role() { eval $( assume-role $@); }	
