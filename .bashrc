@@ -16,20 +16,6 @@ if declare -F _dotfiles_dedupe_path >/dev/null; then
   unset -f _dotfiles_dedupe_path
 fi
 
-# Kubernetes PS1 Prompt (Printed by Git Prompt below)
-if [[ -r "${HOMEBREW_PREFIX}/opt/kube-ps1/share/kube-ps1.sh" ]]; then
-  source "${HOMEBREW_PREFIX}/opt/kube-ps1/share/kube-ps1.sh"
-fi
-
-# Git Prompt
-# Sets PS1 inside and outside of git repos
-# Theme is configured in the ~/.git-prompt-colors.sh file
-if [ -f "${HOMEBREW_PREFIX}/opt/bash-git-prompt/share/gitprompt.sh" ]; then
-  __GIT_PROMPT_DIR="${HOMEBREW_PREFIX}/opt/bash-git-prompt/share"
-  GIT_PROMPT_IGNORE_SUBMODULES=1 # Disable as checking the status of submodules can be very slow
-  source "${HOMEBREW_PREFIX}/opt/bash-git-prompt/share/gitprompt.sh"
-fi
-
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
 
@@ -59,6 +45,20 @@ fi
 
 # Set bash to vi mode
 set -o vi
+
+if command -v starship >/dev/null 2>&1; then
+  if [[ -z "${STARSHIP_CONFIG:-}" ]]; then
+    for _dotfiles_starship_config in "${XDG_CONFIG_HOME:-$HOME/.config}/starship.toml" \
+      "$HOME/.config/starship.toml" "$HOME/.config/dotfiles/starship.toml"; do
+      if [[ -f "$_dotfiles_starship_config" && -r "$_dotfiles_starship_config" ]]; then
+        export STARSHIP_CONFIG="$_dotfiles_starship_config"
+        break
+      fi
+    done
+    unset _dotfiles_starship_config
+  fi
+  eval "$(starship init bash)"
+fi
 
 if command -v mise >/dev/null 2>&1; then
   eval "$(mise activate bash)"

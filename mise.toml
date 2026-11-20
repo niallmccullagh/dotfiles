@@ -4,9 +4,9 @@
 "~/.bash_functions" = { source = ".bash_functions", mode = "symlink" }
 "~/.bash_profile" = { source = ".bash_profile", mode = "symlink" }
 "~/.bashrc" = { source = ".bashrc", mode = "symlink" }
+"~/.config/dotfiles/starship.toml" = { source = "starship.toml", mode = "symlink" }
 "~/.config/mise/config.toml" = { source = "mise/config.toml", mode = "symlink" }
 "~/.exports" = { source = ".exports", mode = "symlink" }
-"~/.git-prompt-colors.sh" = { source = ".git-prompt-colors.sh", mode = "symlink" }
 "~/.gitconfig" = { source = ".gitconfig", mode = "symlink" }
 "~/.inputrc" = { source = ".inputrc", mode = "symlink" }
 "~/.vimrc" = { source = ".vimrc", mode = "symlink" }

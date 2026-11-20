@@ -1,11 +1,11 @@
 ############################################################
 # *nix
 ############################################################
-brew "ack"
+brew "ripgrep"
 brew "openssh"
 brew "bash"
 brew "bash-completion@2"
-brew "bash-git-prompt"
+brew "starship"
 brew "bat"
 brew "cheat"
 brew "findutils"
@@ -16,12 +16,11 @@ brew "gnu-tar"
 brew "gnu-sed"
 brew "mas"
 brew "grep"
-brew "ssh-copy-id"
 brew "tree"
 brew "watch"
 brew "wget"
 brew "ngrep"
-brew "p7zip"
+brew "sevenzip"
 brew "shellcheck"
 brew "dnsmasq"
 brew "jq"
@@ -37,30 +36,21 @@ brew "gh"
 ############################################################
 # Documentation
 ############################################################
-brew "markdown"
+brew "cmark-gfm"
 brew "adr-tools"
 
 ############################################################
 # Languages
 ############################################################
 brew "go"
-brew "jenv"
 brew "maven"
-brew "gradle"
 brew "groovy"
 brew "python"
-
-############################################################
-# Docker
-############################################################
-brew "docker"
-brew "docker-compose"
 
 ############################################################
 # AWS
 ############################################################
 brew "awscli"
-brew "aws-iam-authenticator"
 brew "sops"
 
 ############################################################
@@ -69,7 +59,6 @@ brew "sops"
 brew "kops"
 brew "kubernetes-cli"
 brew "helm"
-brew "kube-ps1"
 brew "kubectx"
 brew "kustomize"
 

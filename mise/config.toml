@@ -1,6 +1,6 @@
 [tools]
-node = "24.14.0"
-ruby = "2.7.2"
+node = "24.22.3"
+ruby = "3.4.13"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node", "ruby"]

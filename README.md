@@ -28,7 +28,7 @@ submodules, and preview and apply again if the link manifest changed.
 
 ### Install Node and Ruby
 
-The linked mise config sets Node 24.14.0 and Ruby 2.7.2 as defaults and reads
+The linked mise config sets Node 24.22.3 and Ruby 3.4.13 as defaults and reads
 project pins from `.node-version`, `.nvmrc`, and `.ruby-version`. On a new Mac,
 set up [Homebrew packages](osx/README.md) first, then run `mise install`.
 
@@ -37,8 +37,8 @@ mise before installing anything. This also preserves packages and gems stored
 with those runtimes. Run these commands for the versions you already have:
 
 ```bash
-mise link node@24.14.0 "$HOME/.nodenv/versions/24.14.0"
-mise link ruby@2.7.2 "$HOME/.rbenv/versions/2.7.2"
+mise link node@24.22.3 "$HOME/.nodenv/versions/24.22.3"
+mise link ruby@3.4.13 "$HOME/.rbenv/versions/3.4.13"
 ```
 
 Open a new Bash session (for example, `bash -l`) and check `node --version`
@@ -46,6 +46,13 @@ and `ruby --version`. Repeat the checks inside projects that use their own
 version pins. Run `mise install` from the project directory when its pinned
 version is missing. Non-interactive Bash login shells use mise shims so
 commands resolve the configured runtime from their working directory.
+
+### Bash prompt
+
+Install Starship from the Brewfile and apply the dotfiles manifest. The bundled
+prompt shows the working directory, Git branch, and active Kubernetes context
+and namespace. Set `STARSHIP_CONFIG` or use Starship's usual user config file to
+load your own prompt settings.
 
 ### Specify the `$PATH`
 

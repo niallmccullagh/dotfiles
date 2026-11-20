@@ -1,0 +1,11 @@
+add_newline = false
+format = "$directory$git_branch$kubernetes$line_break$character"
+
+[git_branch]
+symbol = "git:"
+format = '[$symbol$branch]($style) '
+
+[kubernetes]
+disabled = false
+symbol = "☸ "
+format = '[$symbol$context(:$namespace)]($style) '

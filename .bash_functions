@@ -54,11 +54,6 @@ function k_kibana() {
     fg
 }
 
-# Used by bash-git-prompt
-function prompt_callback {
-    echo " $(kube_ps1)"
-}
-
 function ecr-docker-login() {
   if [[ -z ${1:-} ]]; then
     printf 'Usage: ecr-docker-login REGISTRY [AWS_CLI_OPTIONS...]\n' >&2

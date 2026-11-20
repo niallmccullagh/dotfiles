@@ -23,9 +23,6 @@ set cursorline
 " Always show status line
 set laststatus=2
 
-" Load pathogen plugins
-execute pathogen#infect()
-
 syntax on
 
 filetype plugin indent on
