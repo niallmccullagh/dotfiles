@@ -41,22 +41,31 @@ mise link node@24.22.3 "$HOME/.nodenv/versions/24.22.3"
 mise link ruby@3.4.13 "$HOME/.rbenv/versions/3.4.13"
 ```
 
-Open a new Bash session (for example, `bash -l`) and check `node --version`
+Open a new Bash or Zsh session (for example, `bash -l` or `zsh -l`) and check `node --version`
 and `ruby --version`. Repeat the checks inside projects that use their own
 version pins. Run `mise install` from the project directory when its pinned
-version is missing. Non-interactive Bash login shells use mise shims so
+version is missing. Non-interactive Bash and Zsh login shells use mise shims so
 commands resolve the configured runtime from their working directory.
 
-### Bash prompt
+### Bash and Zsh
+
+The dotfiles manifest adds managed blocks to `~/.zprofile` and `~/.zshrc`.
+Keep your existing settings outside those blocks. If you set a custom
+`ZDOTDIR`, source `~/.config/dotfiles/zprofile` and
+`~/.config/dotfiles/zshrc` from the corresponding startup files there.
 
 Install Starship from the Brewfile and apply the dotfiles manifest. The bundled
 prompt shows the working directory, Git branch, and active Kubernetes context
 and namespace. Set `STARSHIP_CONFIG` or use Starship's usual user config file to
 load your own prompt settings.
 
+Zsh uses its own completion system and caches it in `.zcompdump`. If a Homebrew
+completion is missing, run `autoload -Uz compaudit; compaudit` in Zsh to check
+the completion directories. Zsh skips entries that fail its permission audit.
+
 ### Specify the `$PATH`
 
-Bash sources `~/.path` before loading the shared exports in login shells and
+Bash and Zsh source `~/.path` before setting the shared exports in login shells and
 interactive shells.
 
 Here’s an example `~/.path` file that adds `/usr/local/bin` to the `$PATH`:
@@ -67,12 +76,12 @@ export PATH="/usr/local/bin:$PATH"
 
 ### Add custom commands without creating a new fork
 
-Bash sources `~/.extra` in login shells and interactive shells. You can use
-this file for machine-local settings and environment variables. In interactive
-shells, Bash loads it after the default aliases and functions so you can
-override them. Guard interactive-only commands with a check for `$- == *i*`
-when the same file is used by non-interactive login shells. Keep credentials
-outside this repository.
+Bash and Zsh source `~/.extra` in login shells and interactive shells. You can
+use it for machine-local settings and environment variables. Interactive shells
+load it after the default aliases and functions so you can override them. Use
+`[[ $- == *i* ]]` for interactive-only settings and check `$BASH_VERSION` or
+`$ZSH_VERSION` for shell-specific commands. Keep credentials outside this
+repository.
 
 My `~/.extra` looks something like this:
 

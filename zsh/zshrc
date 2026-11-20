@@ -1,0 +1,38 @@
+[[ -o interactive ]] || return 0
+
+HISTFILE=${HISTFILE:-${ZDOTDIR:-$HOME}/.zsh_history}
+HISTSIZE=32768
+SAVEHIST=32768
+setopt NO_CASE_GLOB AUTO_CD HIST_IGNORE_DUPS HIST_IGNORE_SPACE
+bindkey -v
+
+for _dotfiles_file in "$HOME"/.{exports,aliases,bash_functions,extra}; do
+  [[ -f "$_dotfiles_file" && -r "$_dotfiles_file" ]] && source "$_dotfiles_file"
+done
+unset _dotfiles_file
+
+if (( $+functions[_dotfiles_dedupe_path] )); then
+  _dotfiles_dedupe_path
+  unset -f _dotfiles_dedupe_path
+fi
+
+if (( ! $+functions[compdef] )); then
+  if [[ -n "${HOMEBREW_PREFIX:-}" && -d "$HOMEBREW_PREFIX/share/zsh/site-functions" ]]; then
+    typeset -U fpath
+    fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" "${fpath[@]}")
+  fi
+  autoload -Uz compinit
+  # Skip directories that fail Zsh's permission audit.
+  compinit -i
+fi
+
+if command -v starship >/dev/null 2>&1 && (( ! $+functions[prompt_starship_precmd] )); then
+  if (( $+functions[_dotfiles_starship_config] )); then
+    _dotfiles_starship_config
+  fi
+  eval "$(starship init zsh)"
+fi
+
+if command -v mise >/dev/null 2>&1 && (( ! $+functions[_mise_hook] )); then
+  eval "$(mise activate zsh)"
+fi

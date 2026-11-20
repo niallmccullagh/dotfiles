@@ -47,15 +47,8 @@ fi
 set -o vi
 
 if command -v starship >/dev/null 2>&1; then
-  if [[ -z "${STARSHIP_CONFIG:-}" ]]; then
-    for _dotfiles_starship_config in "${XDG_CONFIG_HOME:-$HOME/.config}/starship.toml" \
-      "$HOME/.config/starship.toml" "$HOME/.config/dotfiles/starship.toml"; do
-      if [[ -f "$_dotfiles_starship_config" && -r "$_dotfiles_starship_config" ]]; then
-        export STARSHIP_CONFIG="$_dotfiles_starship_config"
-        break
-      fi
-    done
-    unset _dotfiles_starship_config
+  if declare -F _dotfiles_starship_config >/dev/null; then
+    _dotfiles_starship_config
   fi
   eval "$(starship init bash)"
 fi

@@ -5,10 +5,18 @@
 "~/.bash_profile" = { source = ".bash_profile", mode = "symlink" }
 "~/.bashrc" = { source = ".bashrc", mode = "symlink" }
 "~/.config/dotfiles/starship.toml" = { source = "starship.toml", mode = "symlink" }
+"~/.config/dotfiles/zprofile" = { source = "zsh/zprofile", mode = "symlink" }
+"~/.config/dotfiles/zshrc" = { source = "zsh/zshrc", mode = "symlink" }
 "~/.config/mise/config.toml" = { source = "mise/config.toml", mode = "symlink" }
 "~/.exports" = { source = ".exports", mode = "symlink" }
 "~/.gitconfig" = { source = ".gitconfig", mode = "symlink" }
 "~/.inputrc" = { source = ".inputrc", mode = "symlink" }
 "~/.vimrc" = { source = ".vimrc", mode = "symlink" }
 "~/.vim" = { source = ".vim", mode = "symlink" }
+"~/.zprofile/dotfiles" = { block = '''
+[[ -r "$HOME/.config/dotfiles/zprofile" ]] && source "$HOME/.config/dotfiles/zprofile"
+''' }
+"~/.zshrc/dotfiles" = { block = '''
+[[ -r "$HOME/.config/dotfiles/zshrc" ]] && source "$HOME/.config/dotfiles/zshrc"
+''' }
 "~/bin" = { source = "bin", mode = "symlink" }
