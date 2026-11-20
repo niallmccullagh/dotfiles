@@ -33,4 +33,3 @@ alias weather="curl wttr.in/belfast"
 
 
 alias k=kubectl
-complete -F _complete_alias k

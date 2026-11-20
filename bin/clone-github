@@ -1,103 +1,71 @@
 #!/bin/bash
-#Script to get all repositories under a organization from github
- 
-script=$0
-team=""
-org=""
-username=""
-password=""
 
-#Set fonts for Help.
-NORM=`tput sgr0`
-BOLD=`tput bold`
-REV=`tput smso`
-
-#Help function
-function show_help {
-	echo -e \\n"${BOLD}${script}:${NORM} clones/pulls the latest code for all the repositories in a github org/team. You must have access to the repositories in order to clone them. Note: Only grabs the first 999 repos ;-)"\\n
-    echo -e "${REV}Basic usage:${NORM} ${BOLD}$script -u {username} -o {org}${NORM}"\\n
-    echo -e "\nThe following command line switches are required:"
-    echo -e "${REV}-u${NORM}  --Your github username."
-    echo -e "${REV}-o${NORM}  --The name of the org you wish to clone all repos."
-    echo -e "\nThe following command line switches are optional:"
-    echo -e "${REV}-t${NORM}  --The name of the team you wish to clone all repos."
-    echo -e "${REV}-p${NORM}  --Your github password. If not supplied you will be prompted to enter."
-    echo -e "${REV}-h${NORM}  --Displays this help message. No further functions are performed."\\n
-    exit 1
+usage() {
+    printf 'Usage: %s -o ORGANIZATION [-t TEAM_SLUG]\n' "${0##*/}"
+    printf 'Run gh auth login to authorize repository listing. New checkouts use SSH.\n'
 }
 
-function validate_arguments {
-    # Prompt for password if not set in the scripts arguments
-    if [ -z $password ]; then
-        echo "Please enter your password:"
-        read -s password
-    fi
-
-    # Validate all args set
-    if [ -z $org ] || [ -z $username ] || [ -z $password ]; then
-        show_help
-     fi
-}
-
-function get_repo_info {
-    if [ -z $team ]; then
-      curl --fail -o repoinfo -su $username:$password https://api.github.com/orgs/$org/repos?per_page=999 2>&1
-    else
-      curl --fail -o repoinfo -su $username:$password https://api.github.com/orgs/$org/teams/$team/repos?per_page=999 2>&1
-    fi
-    return_code=$?
-    if [ $return_code != 0 ]; then
-       tput setaf 1; echo "Failed getting repo list via curl: $return_code"; exit $return_code;
-    fi
-}
-
-function process_repos {
-    for repo_ssh_url in `jq '.[].ssh_url' repoinfo | sed s/\"//g | sort`
-    do
-        repo_name=$(basename $repo_ssh_url .git);
-        if [ ! -d "$repo_name" ]; then
-            echo "Cloning " $repo_ssh_url
-            git clone $repo_ssh_url
-
-            if [ $? != 0 ]; then
-                tput setaf 1; echo "Failed cloning repo"; exit 1
-            fi
-
-        else
-            echo "$repo_name already exists, pulling latest"
-
-            pushd "$repo_name" > /dev/null
-      
-            git pull
-
-            if [ $? != 0 ]; then
-                tput setaf 1; echo "Failed pulling latest"; exit 1
-            fi
-
-            popd > /dev/null
-        fi
-        echo ""
-    done
-}
-
-while getopts "h?t:u:p:o:" opt; do
-    case "$opt" in
-    h|\?)
-        show_help
-        exit 0
-        ;;
-    o)  org=$OPTARG
-        ;;
-    t)  team=$OPTARG
-        ;;
-    u)  username=$OPTARG
-        ;;
-    p)  password=$OPTARG
-	;;
+org=
+team=
+while getopts ':ho:t:' option; do
+    case "$option" in
+        h) usage; exit 0 ;;
+        o) org=$OPTARG ;;
+        t) team=$OPTARG ;;
+        *) usage >&2; exit 2 ;;
     esac
 done
+shift "$((OPTIND - 1))"
 
+if [[ -z $org || $# -gt 0 ]]; then
+    usage >&2
+    exit 2
+fi
 
-validate_arguments
-get_repo_info
-process_repos
+for program in gh git; do
+    if ! command -v "$program" >/dev/null; then
+        printf 'Install %s to use %s.\n' "$program" "${0##*/}" >&2
+        exit 127
+    fi
+done
+
+endpoint="orgs/$org/repos"
+if [[ -n $team ]]; then
+    endpoint="orgs/$org/teams/$team/repos"
+fi
+
+repositories=$(gh api --hostname github.com --paginate "$endpoint?per_page=100" \
+    --jq '.[] | [.name, .ssh_url, .clone_url] | @tsv') || exit "$?"
+if [[ -z $repositories ]]; then
+    printf 'No repositories found.\n'
+    exit 0
+fi
+
+status=0
+while IFS=$'\t' read -r name ssh_url https_url; do
+    directory="./$name"
+    if [[ ! -e $directory && ! -L $directory ]]; then
+        printf 'Cloning %s\n' "$ssh_url"
+        git clone -- "$ssh_url" "$directory" || status=1
+        continue
+    fi
+
+    if [[ ! -e $directory/.git ]] || ! origin=$(git -C "$directory" config --local --get remote.origin.url); then
+        printf 'Skipping %s because it is not a checkout with an origin.\n' "$directory" >&2
+        status=1
+        continue
+    fi
+
+    ssh_scheme_url="ssh://${ssh_url/:/\/}"
+    case "${origin%.git}" in
+        "${ssh_url%.git}"|"${ssh_scheme_url%.git}"|"${https_url%.git}")
+            printf 'Updating %s\n' "$directory"
+            git -C "$directory" pull --ff-only || status=1
+            ;;
+        *)
+            printf 'Skipping %s because its origin does not match %s.\n' "$directory" "$ssh_url" >&2
+            status=1
+            ;;
+    esac
+done <<< "$repositories"
+exit "$status"

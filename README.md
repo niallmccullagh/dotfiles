@@ -44,11 +44,13 @@ mise link ruby@2.7.2 "$HOME/.rbenv/versions/2.7.2"
 Open a new Bash session (for example, `bash -l`) and check `node --version`
 and `ruby --version`. Repeat the checks inside projects that use their own
 version pins. Run `mise install` from the project directory when its pinned
-version is missing.
+version is missing. Non-interactive Bash login shells use mise shims so
+commands resolve the configured runtime from their working directory.
 
 ### Specify the `$PATH`
 
-If `~/.path` exists, it will be sourced along with the other files, before any feature testing (such as detecting which version of `ls` is being used) takes place.
+Bash sources `~/.path` before loading the shared exports in login shells and
+interactive shells.
 
 Here’s an example `~/.path` file that adds `/usr/local/bin` to the `$PATH`:
 
@@ -58,7 +60,12 @@ export PATH="/usr/local/bin:$PATH"
 
 ### Add custom commands without creating a new fork
 
-If `~/.extra` exists, it will be sourced along with the other files. You can use this for machine-local settings and environment variables. Keep credentials outside this repository.
+Bash sources `~/.extra` in login shells and interactive shells. You can use
+this file for machine-local settings and environment variables. In interactive
+shells, Bash loads it after the default aliases and functions so you can
+override them. Guard interactive-only commands with a check for `$- == *i*`
+when the same file is used by non-interactive login shells. Keep credentials
+outside this repository.
 
 My `~/.extra` looks something like this:
 
@@ -74,6 +81,29 @@ git config --global user.email "$GIT_AUTHOR_EMAIL"
 ```
 
 You could also use `~/.extra` to override settings, functions and aliases from my dotfiles repository. It’s probably better to [fork this repository](https://github.com/niallmccullagh/dotfiles/fork) instead, though.
+
+### Clone GitHub organization or team repositories
+
+Install the GitHub CLI (`gh`) and run `gh auth login`. From the directory where
+you want the checkouts, run one of these commands.
+
+```bash
+clone-github -o ORGANIZATION
+clone-github -o ORGANIZATION -t TEAM_SLUG
+```
+
+New checkouts use SSH, so your SSH key also needs access to the repositories.
+Existing checkouts with a matching origin are updated with a fast-forward-only
+pull.
+
+### Log Docker in to Amazon ECR
+
+Pass the registry hostname and the AWS region it belongs to. You can also pass
+`--profile` to select an AWS CLI profile.
+
+```bash
+ecr-docker-login ACCOUNT.dkr.ecr.REGION.amazonaws.com --region REGION
+```
 
 ### OSX
 
